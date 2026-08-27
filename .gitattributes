@@ -1,0 +1,10 @@
+# Binarios: nunca normalizar saltos de linea (corrompe PDF e imagenes)
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+
+# Texto
+*.html text eol=lf
+*.md   text eol=lf
