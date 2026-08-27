@@ -8,6 +8,7 @@
 <meta property="og:title" content="Antoine Jacquemin — Data &amp; Marketing Analyst">
 <meta property="og:description" content="Dashboards, analítica de crecimiento y calidad de datos de producto. CDMX.">
 <meta property="og:type" content="website">
+<meta name="author" content="Antoine Jacquemin Ramírez">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -135,6 +136,24 @@ h2{font-family:var(--f-display);font-weight:600;font-size:clamp(1.5rem,3.4vw,2re
 .card p{margin:0;font-size:.92rem;color:var(--ink-soft);}
 .stack{display:flex;flex-wrap:wrap;gap:.3rem;list-style:none;margin:0;padding:0;}
 .stack li{font-family:var(--f-mono);font-size:.7rem;padding:.25rem .45rem;border:1px solid var(--rule);color:var(--ink-faint);border-radius:2px;}
+.usedfor{
+  background:var(--surface-2);border-left:2px solid var(--accent-dim);
+  padding:.6rem .75rem;margin:.15rem 0 0;font-size:.88rem;color:var(--ink-soft);
+}
+.usedfor b{
+  display:block;font-family:var(--f-mono);font-size:.63rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem;
+}
+.byline{
+  font-family:var(--f-mono);font-size:.7rem;line-height:1.45;
+  color:var(--ink-faint);margin:.15rem 0 0;padding-top:.6rem;
+  border-top:1px dotted var(--rule);
+}
+.byline b{display:block;font-weight:500;color:var(--ink-soft);}
+.authorship{
+  font-size:.9rem;color:var(--ink-soft);max-width:var(--measure);
+  margin:-.6rem 0 1.6rem;padding-left:.9rem;border-left:2px solid var(--accent-dim);
+}
 .card-links{margin-top:auto;padding-top:.35rem;display:flex;flex-wrap:wrap;gap:.6rem;}
 .card-links a{font-family:var(--f-mono);font-size:.76rem;text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:1px;}
 
@@ -220,6 +239,12 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
       <span class="sec-note">Dashboards y plataformas de datos</span>
     </div>
 
+    <p class="authorship">
+      Todos los dashboards de esta sección son de mi autoría: el modelo de datos, las
+      consultas, el pipeline y el diseño de cada vista. Puedo explicar cualquiera de ellos
+      línea por línea.
+    </p>
+
     <div class="grid">
 
       <article class="card">
@@ -237,6 +262,8 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
             Firestore y reglas de seguridad por organización.
           </p>
           <ul class="stack"><li>Power BI</li><li>Google Analytics</li><li>Firebase</li><li>Firestore</li><li>JavaScript</li></ul>
+          <p class="usedfor"><b>Para qué se usó</b>Para que una empresa vea su liquidez, su margen y un score de salud financiera todos los días, sin esperar al cierre contable.</p>
+          <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
           <div class="card-links">
             <a href="https://finemetrix-4dde5.web.app" target="_blank" rel="noopener">Ver en producción →</a>
           </div>
@@ -255,6 +282,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
             riesgo, con el modelo de datos y las consultas SQL que lo alimentan.
           </p>
           <ul class="stack"><li>Power BI</li><li>SQL</li></ul>
+          <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
         </div>
       </article>
 
@@ -270,6 +298,8 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
             ventas, desempeño y rentabilidad por punto, con reportería automatizada.
           </p>
           <ul class="stack"><li>Power BI</li><li>SQL</li></ul>
+          <p class="usedfor"><b>Para qué se usó</b>Para consolidar la operación de todas las sucursales de un cliente en una sola vista comparable, en lugar de un reporte suelto por punto de venta.</p>
+          <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
         </div>
       </article>
 
@@ -285,6 +315,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
             en un solo indicador, para detectar cuentas en riesgo antes de que se vayan.
           </p>
           <ul class="stack"><li>SQL</li><li>Power BI</li></ul>
+          <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
         </div>
       </article>
 
@@ -302,6 +333,8 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
             segmentación RFM.
           </p>
           <ul class="stack"><li>SQL</li><li>Power BI</li><li>Meta Ads</li><li>Google Ads</li><li>RFM</li></ul>
+          <p class="usedfor"><b>Para qué se usó</b>Para decidir cuánto invertir en cada canal: pone CAC, ROAS y usuarios captados lado a lado, y marca en qué punto del embudo se está perdiendo a la gente.</p>
+          <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
           <div class="card-links">
             <a href="proyectos/growth-analytics-fintech.html">Abrir el dashboard →</a>
           </div>
@@ -321,6 +354,8 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
             sin un peso de inversión publicitaria.
           </p>
           <ul class="stack"><li>SQL Server</li><li>Tableau</li><li>Power Query</li><li>Cohortes</li></ul>
+          <p class="usedfor"><b>Para qué se usó</b>Para sustituir los reportes manuales del equipo de finanzas y dar a dirección una vista unificada de producto, geografía y cohortes con la que decidir inventario y marketing.</p>
+          <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
           <div class="card-links">
             <a href="assets/ecommerce-sales-intelligence.png" target="_blank" rel="noopener">Ver dashboard →</a>
             <a href="assets/caso-ecommerce-sales-intelligence.pdf" target="_blank" rel="noopener">Leer el caso →</a>
@@ -441,6 +476,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
   <div class="wrap">
     <span class="sig">Antoine Jacquemin Ramírez · Data &amp; Marketing Analyst · CDMX</span>
     <span class="sig"><a href="mailto:anjaraful@gmail.com">anjaraful@gmail.com</a></span>
+    <span class="sig" style="flex-basis:100%">© 2026 Antoine Jacquemin Ramírez · Dashboards, análisis y código de mi autoría.</span>
   </div>
 </footer>
 

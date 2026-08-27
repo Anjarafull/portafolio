@@ -1,3 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Growth Analytics para Fintech — Antoine Jacquemin</title>
+<meta name="author" content="Antoine Jacquemin Ramírez">
+<meta name="description" content="Dashboard de adquisición, retención y unit economics para fintech: CAC, LTV, embudo de conversión, desempeño por canal y segmentación RFM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600&family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Variables que el fragmento del dashboard espera de su anfitrion.
+   El tablero se diseno sobre superficie clara; la pagina que lo enmarca es oscura. */
+:root{
+  --color-background-primary:#FFFFFF;
+  --color-background-secondary:#F3F6F5;
+  --color-border-tertiary:#D9E0DE;
+  --color-text-primary:#16242B;
+  --color-text-secondary:#5B6C6A;
+  --border-radius-lg:10px;
+  --border-radius-md:6px;
+  --font-sans:"Public Sans","Segoe UI",Helvetica,Arial,sans-serif;
+
+  --bg:#0E1518; --ink:#E7EEEB; --ink-soft:#9EB2AF; --ink-faint:#6F8481;
+  --rule:#25373D; --accent:#4FB79B;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;}
+.page{max-width:64rem;margin:0 auto;padding:clamp(1.1rem,4vw,2.5rem);}
+.back{
+  display:inline-block;font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  font-size:.78rem;color:var(--accent);text-decoration:none;margin-bottom:1.5rem;
+}
+.back:hover{text-decoration:underline;}
+.page > h1{
+  font-family:"Zilla Slab",Georgia,serif;font-weight:600;
+  font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.1;margin:0 0 .4rem;letter-spacing:-.015em;
+}
+.page > .sub{color:var(--ink-soft);margin:0 0 1.8rem;max-width:62ch;}
+.screen{overflow-x:auto;}
+.credit{
+  font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  font-size:.75rem;color:var(--ink-faint);line-height:1.6;
+  margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--rule);
+}
+.credit b{color:var(--ink-soft);font-weight:500;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="../index.html">← Volver al portafolio</a>
+  <h1>Growth Analytics para Fintech</h1>
+  <p class="sub">
+    Adquisición, retención y unit economics en un solo tablero: el embudo completo,
+    el costo por canal y la segmentación RFM que decide dónde vale la pena insistir.
+  </p>
+  <div class="screen">
 <style>
 .dash-wrap { background: var(--color-background-primary); border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); padding: 20px; font-family: var(--font-sans); }
 .dash-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 0.5px solid var(--color-border-tertiary); }
@@ -186,3 +245,11 @@ new Chart(document.getElementById('rfmChart'), {
   }
 });
 </script>
+  </div>
+  <p class="credit">
+    Diseñado y construido por <b>Antoine Jacquemin Ramírez</b> · Data &amp; Marketing Analyst · CDMX<br>
+    © 2026 Antoine Jacquemin Ramírez. Modelo de datos, consultas y diseño de las vistas son de mi autoría.
+  </p>
+</div>
+</body>
+</html>
