@@ -121,16 +121,6 @@ h2{font-family:var(--f-display);font-weight:600;font-size:clamp(1.5rem,3.4vw,2re
 .card:hover{border-color:var(--accent-dim);}
 .thumb{background:var(--surface-2);border-bottom:1px solid var(--rule);aspect-ratio:16/10;overflow:hidden;position:relative;}
 .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
-.thumb-blank{
-  width:100%;height:100%;
-  background:
-    linear-gradient(0deg, rgba(231,238,235,.05) 1px, transparent 1px) 0 0/100% 1.4rem,
-    linear-gradient(90deg, rgba(231,238,235,.05) 1px, transparent 1px) 0 0/1.4rem 100%,
-    linear-gradient(140deg, var(--surface-2), #142327);
-  display:flex;align-items:flex-end;padding:1rem;
-}
-.thumb-blank .spark{display:flex;align-items:flex-end;gap:.35rem;height:55%;width:100%;}
-.thumb-blank .spark i{flex:1;background:var(--accent-dim);border-radius:2px 2px 0 0;opacity:.75;}
 .card-body{padding:1.1rem 1.15rem 1.25rem;display:flex;flex-direction:column;gap:.6rem;flex:1;}
 .card h3{font-family:var(--f-display);font-size:1.12rem;font-weight:600;margin:0;line-height:1.25;}
 .card p{margin:0;font-size:.92rem;color:var(--ink-soft);}
@@ -248,9 +238,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
 
       <article class="card">
         <div class="thumb">
-          <!-- Para la captura: guarda la imagen como assets/finemetrix.png y cambia este bloque por
-               <img src="assets/finemetrix.png" alt="Dashboard de FineMetrix 2.0"> -->
-          <div class="thumb-blank"><span class="spark"><i style="height:38%"></i><i style="height:56%"></i><i style="height:44%"></i><i style="height:72%"></i><i style="height:61%"></i><i style="height:88%"></i><i style="height:79%"></i><i style="height:100%"></i></span></div>
+          <img src="assets/finemetrix.png" alt="Portada del caso FineMetrix 2.0: Plataforma SaaS de administración financiera para PyMEs">
         </div>
         <div class="card-body">
           <h3>FineMetrix 2.0</h3>
@@ -265,6 +253,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
           <p class="usedfor"><b>Para qué se usó</b>Para que una empresa vea su liquidez, su margen y un score de salud financiera todos los días, sin esperar al cierre contable.</p>
           <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
           <div class="card-links">
+            <a href="casos/finemetrix.pdf" target="_blank" rel="noopener">Descargar el caso (PDF) →</a>
             <a href="https://finemetrix-4dde5.web.app" target="_blank" rel="noopener">Ver en producción →</a>
           </div>
         </div>
@@ -272,8 +261,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
 
       <article class="card">
         <div class="thumb">
-          <!-- Captura: assets/cartera.png -->
-          <div class="thumb-blank"><span class="spark"><i style="height:70%"></i><i style="height:52%"></i><i style="height:84%"></i><i style="height:41%"></i><i style="height:63%"></i><i style="height:30%"></i><i style="height:58%"></i><i style="height:47%"></i></span></div>
+          <img src="assets/cartera.png" alt="Portada del caso Inteligencia para Cartera: Dashboard de seguimiento de cartera para una empresa cliente">
         </div>
         <div class="card-body">
           <h3>Inteligencia para Cartera</h3>
@@ -284,13 +272,15 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
           <ul class="stack"><li>Power BI</li><li>SQL</li></ul>
           <p class="usedfor"><b>Para qué se usó</b>Entregado a una empresa cliente, que lo revisó y lo adoptó: el equipo financiero dejó de seguir la cartera en hojas sueltas y pasó a una sola vista con saldos, antigüedad y concentración de riesgo.</p>
           <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
+          <div class="card-links">
+            <a href="casos/cartera.pdf" target="_blank" rel="noopener">Descargar el caso (PDF) →</a>
+          </div>
         </div>
       </article>
 
       <article class="card">
         <div class="thumb">
-          <!-- Captura: assets/multisucursal.png -->
-          <div class="thumb-blank"><span class="spark"><i style="height:44%"></i><i style="height:66%"></i><i style="height:59%"></i><i style="height:81%"></i><i style="height:73%"></i><i style="height:92%"></i><i style="height:55%"></i><i style="height:68%"></i></span></div>
+          <img src="assets/multisucursal.png" alt="Portada del caso Operación Multi-sucursal: Consolidación de la operación de varias sucursales en una vista comparable">
         </div>
         <div class="card-body">
           <h3>Operación Multi-sucursal</h3>
@@ -301,13 +291,15 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
           <ul class="stack"><li>Power BI</li><li>SQL</li></ul>
           <p class="usedfor"><b>Para qué se usó</b>Para consolidar la operación de todas las sucursales de un cliente en una sola vista comparable, en lugar de un reporte suelto por punto de venta.</p>
           <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
+          <div class="card-links">
+            <a href="casos/multisucursal.pdf" target="_blank" rel="noopener">Descargar el caso (PDF) →</a>
+          </div>
         </div>
       </article>
 
       <article class="card">
         <div class="thumb">
-          <!-- Captura: assets/customer-health-score.png -->
-          <div class="thumb-blank"><span class="spark"><i style="height:88%"></i><i style="height:74%"></i><i style="height:62%"></i><i style="height:55%"></i><i style="height:49%"></i><i style="height:38%"></i><i style="height:33%"></i><i style="height:26%"></i></span></div>
+          <img src="assets/customer-health-score.png" alt="Portada del caso Customer Health Score: Un indicador para detectar cuentas en riesgo antes de perderlas">
         </div>
         <div class="card-body">
           <h3>Customer Health Score</h3>
@@ -318,13 +310,15 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
           <ul class="stack"><li>SQL</li><li>Power BI</li></ul>
           <p class="usedfor"><b>Para qué se usó</b>Entregado a una empresa cliente, que lo revisó y lo puso a trabajar: el equipo detecta las cuentas en riesgo antes de perderlas, con un solo indicador en vez de revisar cliente por cliente.</p>
           <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
+          <div class="card-links">
+            <a href="casos/customer-health-score.pdf" target="_blank" rel="noopener">Descargar el caso (PDF) →</a>
+          </div>
         </div>
       </article>
 
       <article class="card">
         <div class="thumb">
-          <!-- Captura: assets/growth-analytics-fintech.png -->
-          <div class="thumb-blank"><span class="spark"><i style="height:100%"></i><i style="height:38%"></i><i style="height:22%"></i><i style="height:14%"></i><i style="height:8%"></i><i style="height:46%"></i><i style="height:59%"></i><i style="height:35%"></i></span></div>
+          <img src="assets/growth-analytics-fintech.png" alt="Portada del caso Growth Analytics para Fintech: Adquisición, retención y unit economics en un solo tablero">
         </div>
         <div class="card-body">
           <h3>Growth Analytics para Fintech</h3>
@@ -338,6 +332,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
           <p class="usedfor"><b>Para qué se usó</b>Para decidir cuánto invertir en cada canal: pone CAC, ROAS y usuarios captados lado a lado, y marca en qué punto del embudo se está perdiendo a la gente.</p>
           <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
           <div class="card-links">
+            <a href="casos/growth-analytics-fintech.pdf" target="_blank" rel="noopener">Descargar el caso (PDF) →</a>
             <a href="proyectos/growth-analytics-fintech.html">Abrir el dashboard →</a>
           </div>
         </div>
@@ -359,6 +354,7 @@ footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
           <p class="usedfor"><b>Para qué se usó</b>Para sustituir los reportes manuales del equipo de finanzas y dar a dirección una vista unificada de producto, geografía y cohortes con la que decidir inventario y marketing.</p>
           <p class="byline">Diseñado y construido por<b>Antoine Jacquemin Ramírez</b></p>
           <div class="card-links">
+            <a href="casos/ecommerce-sales-intelligence.pdf" target="_blank" rel="noopener">Descargar el caso (PDF) →</a>
             <a href="assets/ecommerce-sales-intelligence.png" target="_blank" rel="noopener">Ver dashboard →</a>
             <a href="assets/caso-ecommerce-sales-intelligence.pdf" target="_blank" rel="noopener">Leer el caso →</a>
           </div>

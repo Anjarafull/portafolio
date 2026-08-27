@@ -13,28 +13,25 @@ proyectos/
   growth-analytics-fintech.html     dashboard interactivo enlazado desde la tarjeta
 ```
 
-## Faltan 4 capturas
+## Estructura de cada proyecto
 
-Cuatro tarjetas muestran hoy un marcador gráfico en lugar de la imagen del dashboard.
-Para completarlas, guarda cada captura en `assets/` con estos nombres exactos:
+Cada uno de los 6 proyectos tiene dos piezas:
 
-| Tarjeta | Archivo esperado |
+| Pieza | Dónde vive |
 |---|---|
-| FineMetrix 2.0 | `assets/finemetrix.png` |
-| Inteligencia para Cartera | `assets/cartera.png` |
-| Operación Multi-sucursal | `assets/multisucursal.png` |
-| Customer Health Score | `assets/customer-health-score.png` |
+| Portada 16:10 | `assets/<slug>.png` — es la miniatura de la tarjeta |
+| Caso de estudio en PDF | `casos/<slug>.pdf` — el botón "Descargar el caso" |
 
-Después, en `index.html`, sustituye el bloque `<div class="thumb-blank">…</div>` de esa
-tarjeta por:
+Los slugs son: `finemetrix`, `cartera`, `multisucursal`, `customer-health-score`,
+`growth-analytics-fintech`, `ecommerce-sales-intelligence`.
 
-```html
-<img src="assets/finemetrix.png" alt="Dashboard de FineMetrix 2.0">
-```
+Dos portadas son capturas reales del tablero (e-commerce y growth fintech). Las otras
+cuatro son portadas de caso diseñadas, con el título, las herramientas y —donde hay
+cifras verificables— sus métricas. Si consigues la captura real de alguno, sustituye
+el PNG con el mismo nombre y listo: la tarjeta la toma sola.
 
-Cada tarjeta ya tiene un comentario HTML en su sitio recordando el nombre del archivo.
-Formato recomendado: PNG o JPG, ancho de 1200–1600 px. Las miniaturas se recortan a 16:10
-desde el borde superior, así que la parte importante del dashboard conviene que esté arriba.
+Las portadas y los PDFs se regeneran con los scripts del scratchpad
+(`casos_contenido.py` tiene todo el texto, `render_casos.py` los dibuja).
 
 ## Ver el sitio en local
 
