@@ -1,0 +1,188 @@
+<style>
+.dash-wrap { background: var(--color-background-primary); border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); padding: 20px; font-family: var(--font-sans); }
+.dash-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.dash-title { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
+.dash-sub { font-size: 12px; color: var(--color-text-secondary); }
+.dash-period { font-size: 12px; color: var(--color-text-secondary); text-align: right; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+.kpi-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
+.kpi-label { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+.kpi-value { font-size: 22px; font-weight: 500; color: var(--color-text-primary); line-height: 1.1; }
+.kpi-delta { font-size: 11px; margin-top: 4px; display: flex; align-items: center; gap: 3px; }
+.kpi-up { color: #0F6E56; }
+.kpi-down { color: #A32D2D; }
+.section { margin-bottom: 16px; }
+.section-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 10px; }
+.funnel-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+.funnel-label { width: 110px; color: var(--color-text-secondary); }
+.funnel-bar { height: 26px; background: #185FA5; border-radius: 3px; display: flex; align-items: center; padding: 0 10px; color: white; font-weight: 500; font-size: 12px; }
+.funnel-conv { width: 60px; text-align: right; font-size: 11px; color: var(--color-text-secondary); }
+.charts-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; }
+.chart-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px; }
+.chart-wrap { position: relative; width: 100%; height: 180px; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--color-text-secondary); margin-bottom: 8px; }
+.legend-item { display: flex; align-items: center; gap: 4px; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 2px; }
+.bottom-bars { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-top: 4px; }
+.channel-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; }
+.channel-name { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; }
+.channel-value { font-size: 16px; font-weight: 500; }
+.channel-meta { font-size: 10px; color: var(--color-text-secondary); margin-top: 2px; }
+</style>
+
+<h2 class="sr-only">Dashboard de growth analytics para fintech mostrando CAC, LTV, funnel de conversión, tendencias por canal y segmentación RFM</h2>
+
+<div class="dash-wrap">
+  <div class="dash-header">
+    <div>
+      <p class="dash-title">Growth analytics · fintech latam</p>
+      <p class="dash-sub">Adquisición, retención y unit economics</p>
+    </div>
+    <div class="dash-period">Q4 2021 · 30,432 usuarios activos</div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">CAC blended</div>
+      <div class="kpi-value">$42</div>
+      <div class="kpi-delta kpi-up"><i class="ti ti-trending-down" aria-hidden="true"></i> 30% vs Q1</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">LTV (12m)</div>
+      <div class="kpi-value">$185</div>
+      <div class="kpi-delta kpi-up"><i class="ti ti-trending-up" aria-hidden="true"></i> 18% vs Q1</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">LTV / CAC</div>
+      <div class="kpi-value">4.4x</div>
+      <div class="kpi-delta kpi-up"><i class="ti ti-trending-up" aria-hidden="true"></i> Healthy</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Conv. rate</div>
+      <div class="kpi-value">8.4%</div>
+      <div class="kpi-delta kpi-up"><i class="ti ti-trending-up" aria-hidden="true"></i> 40% vs Q1</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Funnel de conversión</p>
+    <div class="funnel-row">
+      <div class="funnel-label">Visitantes</div>
+      <div class="funnel-bar" style="width: 100%;">412,038</div>
+      <div class="funnel-conv">100%</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Signups</div>
+      <div class="funnel-bar" style="width: 38%;">156,574</div>
+      <div class="funnel-conv">38%</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Verificados</div>
+      <div class="funnel-bar" style="width: 22%;">90,648</div>
+      <div class="funnel-conv">22%</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Activados</div>
+      <div class="funnel-bar" style="width: 14%;">57,685</div>
+      <div class="funnel-conv">14%</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Recurrentes</div>
+      <div class="funnel-bar" style="width: 8.4%;">34,612</div>
+      <div class="funnel-conv">8.4%</div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <p class="section-title">CAC por canal · evolución mensual</p>
+      <div class="legend-row">
+        <span class="legend-item"><span class="legend-swatch" style="background: #185FA5;"></span>Meta ads</span>
+        <span class="legend-item"><span class="legend-swatch" style="background: #1D9E75;"></span>Google ads</span>
+        <span class="legend-item"><span class="legend-swatch" style="background: #BA7517;"></span>TikTok</span>
+        <span class="legend-item"><span class="legend-swatch" style="background: #888780;"></span>Orgánico</span>
+      </div>
+      <div class="chart-wrap"><canvas id="cacChart" role="img" aria-label="Línea de tiempo mostrando reducción del costo de adquisición por canal del Q1 al Q4 2021"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <p class="section-title">Segmentación RFM</p>
+      <div class="legend-row">
+        <span class="legend-item"><span class="legend-swatch" style="background: #0F6E56;"></span>Champions</span>
+        <span class="legend-item"><span class="legend-swatch" style="background: #5DCAA5;"></span>Loyal</span>
+        <span class="legend-item"><span class="legend-swatch" style="background: #BA7517;"></span>At risk</span>
+        <span class="legend-item"><span class="legend-swatch" style="background: #B4B2A9;"></span>Lost</span>
+      </div>
+      <div class="chart-wrap"><canvas id="rfmChart" role="img" aria-label="Donut chart con distribución de usuarios por segmento RFM"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 18px;">
+    <p class="section-title">Performance por canal (Q4)</p>
+    <div class="bottom-bars">
+      <div class="channel-card" style="border-left: 3px solid #185FA5;">
+        <div class="channel-name">Meta ads</div>
+        <div class="channel-value">$18,420</div>
+        <div class="channel-meta">ROAS 3.8x · 7,128 users</div>
+      </div>
+      <div class="channel-card" style="border-left: 3px solid #1D9E75;">
+        <div class="channel-name">Google ads</div>
+        <div class="channel-value">$14,280</div>
+        <div class="channel-meta">ROAS 4.2x · 5,840 users</div>
+      </div>
+      <div class="channel-card" style="border-left: 3px solid #BA7517;">
+        <div class="channel-name">TikTok ads</div>
+        <div class="channel-value">$5,640</div>
+        <div class="channel-meta">ROAS 2.9x · 3,012 users</div>
+      </div>
+      <div class="channel-card" style="border-left: 3px solid #888780;">
+        <div class="channel-name">Orgánico</div>
+        <div class="channel-value">$0</div>
+        <div class="channel-meta">CTR 4.1% · 18,632 users</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+
+new Chart(document.getElementById('cacChart'), {
+  type: 'line',
+  data: {
+    labels: months,
+    datasets: [
+      { label: 'Meta', data: [62,58,54,52,48,46,44,42,40,38,37,36], borderColor: '#185FA5', backgroundColor: '#185FA5', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+      { label: 'Google', data: [55,52,50,48,46,44,42,40,38,37,36,35], borderColor: '#1D9E75', backgroundColor: '#1D9E75', tension: 0.3, pointRadius: 2, borderDash: [4,3], borderWidth: 2 },
+      { label: 'TikTok', data: [null,null,null,68,62,58,54,50,46,44,42,40], borderColor: '#BA7517', backgroundColor: '#BA7517', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+      { label: 'Orgánico', data: [8,8,9,9,10,11,12,12,13,13,14,14], borderColor: '#888780', backgroundColor: '#888780', tension: 0.3, pointRadius: 2, borderDash: [2,2], borderWidth: 2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: false, ticks: { callback: (v) => '$' + v, font: { size: 10 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+      x: { ticks: { font: { size: 10 } }, grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('rfmChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Champions','Loyal','Potential','At risk','Hibernating','Lost'],
+    datasets: [{
+      data: [20, 18, 22, 15, 13, 12],
+      backgroundColor: ['#0F6E56','#5DCAA5','#9FE1CB','#BA7517','#F0997B','#B4B2A9'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    cutout: '60%'
+  }
+});
+</script>

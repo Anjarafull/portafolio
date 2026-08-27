@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antoine Jacquemin — Data &amp; Marketing Analyst</title>
+<meta name="description" content="Portafolio de Antoine Jacquemin Ramírez, Data &amp; Marketing Analyst en Ciudad de México. Dashboards, analítica de crecimiento y calidad de datos de producto.">
+<meta property="og:title" content="Antoine Jacquemin — Data &amp; Marketing Analyst">
+<meta property="og:description" content="Dashboards, analítica de crecimiento y calidad de datos de producto. CDMX.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#0E1518;
+  --surface:#152125;
+  --surface-2:#1C2C31;
+  --ink:#E7EEEB;
+  --ink-soft:#9EB2AF;
+  --ink-faint:#6F8481;
+  --rule:#25373D;
+  --accent:#4FB79B;
+  --accent-dim:#2C6A5C;
+  --brass:#D3A257;
+  --f-display:"Zilla Slab",Georgia,"Times New Roman",serif;
+  --f-body:"Public Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --measure:68ch;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{animation:none!important;transition:none!important;}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--f-body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-underline-offset:3px;}
+a:hover{color:#6FD0B4;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+img{max-width:100%;height:auto;}
+
+.wrap{max-width:70rem;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem);}
+
+/* ---- barra superior ---- */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(14,21,24,.88);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:3.5rem;}
+.brand{font-family:var(--f-mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;}
+.navlinks{display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;}
+.navlinks a{font-size:.85rem;color:var(--ink-soft);text-decoration:none;}
+.navlinks a:hover{color:var(--accent);}
+@media (max-width:46rem){.navlinks{display:none;}}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--f-mono);font-size:.78rem;letter-spacing:.04em;
+  padding:.55rem .9rem;border:1px solid var(--accent);
+  color:var(--accent);text-decoration:none;background:transparent;
+  border-radius:2px;white-space:nowrap;
+}
+.btn:hover{background:var(--accent);color:#08110F;}
+.btn-solid{background:var(--accent);color:#08110F;}
+.btn-solid:hover{background:#6FD0B4;color:#08110F;}
+.btn-quiet{border-color:var(--rule);color:var(--ink-soft);}
+.btn-quiet:hover{background:var(--surface-2);color:var(--ink);border-color:var(--ink-faint);}
+
+/* ---- hero ---- */
+.hero{
+  border-bottom:1px solid var(--rule);
+  background:
+    radial-gradient(60rem 26rem at 12% -10%, rgba(79,183,155,.12), transparent 70%),
+    linear-gradient(0deg, rgba(231,238,235,.028) 1px, transparent 1px) 0 0/100% 1.6rem,
+    linear-gradient(90deg, rgba(231,238,235,.028) 1px, transparent 1px) 0 0/1.6rem 100%;
+}
+.hero .wrap{padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(2.5rem,5vw,3.5rem);display:flex;flex-direction:column;gap:1.4rem;}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0;}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(2.4rem,6.5vw,4.1rem);line-height:1.03;letter-spacing:-.015em;margin:0;text-wrap:balance;}
+.subtitle{font-family:var(--f-display);font-weight:400;font-size:clamp(1.1rem,2.6vw,1.5rem);color:var(--ink-soft);margin:0;}
+.pitch{max-width:var(--measure);color:var(--ink-soft);margin:0;font-size:1.05rem;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:.5rem;}
+.metric{background:var(--surface);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.15rem;}
+.metric .v{font-family:var(--f-mono);font-weight:600;font-size:1.6rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--accent);}
+.metric .k{font-size:.82rem;color:var(--ink-soft);line-height:1.35;}
+
+.contactbar{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;font-family:var(--f-mono);font-size:.82rem;list-style:none;margin:.3rem 0 0;padding:0;}
+.contactbar li{display:flex;gap:.45rem;align-items:baseline;}
+.contactbar .k{color:var(--ink-faint);}
+.contactbar a{text-decoration:none;}
+.contactbar a:hover{text-decoration:underline;}
+
+/* ---- secciones ---- */
+section{padding:clamp(2.8rem,6vw,4.5rem) 0;border-bottom:1px solid var(--rule);}
+section:last-of-type{border-bottom:0;}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem;}
+h2{font-family:var(--f-display);font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);margin:0;letter-spacing:-.01em;}
+.sec-note{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+
+/* ---- skills ---- */
+.skills{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0;padding:0;}
+.skills li{
+  font-family:var(--f-mono);font-size:.82rem;
+  padding:.5rem .75rem;border:1px solid var(--rule);
+  background:var(--surface);color:var(--ink-soft);border-radius:2px;
+}
+
+/* ---- proyectos ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr));gap:1.25rem;}
+.card{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.card:hover{border-color:var(--accent-dim);}
+.thumb{background:var(--surface-2);border-bottom:1px solid var(--rule);aspect-ratio:16/10;overflow:hidden;position:relative;}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.thumb-blank{
+  width:100%;height:100%;
+  background:
+    linear-gradient(0deg, rgba(231,238,235,.05) 1px, transparent 1px) 0 0/100% 1.4rem,
+    linear-gradient(90deg, rgba(231,238,235,.05) 1px, transparent 1px) 0 0/1.4rem 100%,
+    linear-gradient(140deg, var(--surface-2), #142327);
+  display:flex;align-items:flex-end;padding:1rem;
+}
+.thumb-blank .spark{display:flex;align-items:flex-end;gap:.35rem;height:55%;width:100%;}
+.thumb-blank .spark i{flex:1;background:var(--accent-dim);border-radius:2px 2px 0 0;opacity:.75;}
+.card-body{padding:1.1rem 1.15rem 1.25rem;display:flex;flex-direction:column;gap:.6rem;flex:1;}
+.card h3{font-family:var(--f-display);font-size:1.12rem;font-weight:600;margin:0;line-height:1.25;}
+.card p{margin:0;font-size:.92rem;color:var(--ink-soft);}
+.stack{display:flex;flex-wrap:wrap;gap:.3rem;list-style:none;margin:0;padding:0;}
+.stack li{font-family:var(--f-mono);font-size:.7rem;padding:.25rem .45rem;border:1px solid var(--rule);color:var(--ink-faint);border-radius:2px;}
+.card-links{margin-top:auto;padding-top:.35rem;display:flex;flex-wrap:wrap;gap:.6rem;}
+.card-links a{font-family:var(--f-mono);font-size:.76rem;text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:1px;}
+
+/* ---- experiencia ---- */
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+.timeline li{
+  display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;
+  padding:1.15rem 0;border-top:1px solid var(--rule);
+}
+.timeline li:first-child{border-top:0;}
+.timeline .when{font-family:var(--f-mono);font-size:.8rem;color:var(--ink-faint);font-variant-numeric:tabular-nums;padding-top:.15rem;}
+.timeline .role{font-family:var(--f-display);font-size:1.1rem;font-weight:600;margin:0 0 .1rem;}
+.timeline .org{font-size:.9rem;color:var(--accent);margin:0 0 .4rem;}
+.timeline .what{font-size:.93rem;color:var(--ink-soft);margin:0;max-width:var(--measure);}
+@media (max-width:40rem){.timeline li{grid-template-columns:minmax(0,1fr);gap:.3rem;}}
+
+/* ---- cierre ---- */
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:2rem;}
+.mini h3{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .8rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule);}
+.mini ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem;}
+.mini li{display:flex;justify-content:space-between;gap:1rem;font-size:.92rem;border-bottom:1px dotted var(--rule);padding-bottom:.4rem;}
+.mini .meta{font-family:var(--f-mono);font-size:.8rem;color:var(--ink-faint);text-align:right;}
+
+footer{padding:2.5rem 0 3.5rem;border-top:1px solid var(--rule);}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center;}
+footer .sig{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint);}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Antoine Jacquemin</a>
+    <nav>
+      <ul class="navlinks">
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-solid" href="assets/CV-Antoine-Jacquemin-ES.pdf" download>Descargar CV</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Ciudad de México · Disponible para remoto</p>
+    <h1>Antoine Jacquemin Ramírez</h1>
+    <p class="subtitle">Data &amp; Marketing Analyst</p>
+    <p class="pitch">
+      Convierto datos de producto y marketing en decisiones: dónde invertir, qué campaña
+      sostener, qué cliente se está por ir. Cinco años entre fintech, retail y consultoría,
+      construyendo dashboards que la gente de verdad usa para decidir.
+    </p>
+
+    <div class="metrics">
+      <div class="metric"><span class="v">−25%</span><span class="k">Reducción de CAC</span></div>
+      <div class="metric"><span class="v">2.8x</span><span class="k">ROAS en campañas gestionadas</span></div>
+      <div class="metric"><span class="v">$500K+</span><span class="k">Presupuestos bajo control</span></div>
+      <div class="metric"><span class="v">30K+</span><span class="k">Usuarios segmentados</span></div>
+    </div>
+
+    <ul class="contactbar">
+      <li><span class="k">Correo</span><a href="mailto:anjaraful@gmail.com">anjaraful@gmail.com</a></li>
+      <li><span class="k">Tel</span><a href="tel:+525534680740">55 3468 0740</a></li>
+      <li><span class="k">LinkedIn</span><a href="https://linkedin.com/in/antoine-jacquemin" target="_blank" rel="noopener">antoine-jacquemin</a></li>
+      <li><span class="k">Ubicación</span>CDMX, México</li>
+    </ul>
+
+    <div class="hero-actions">
+      <a class="btn" href="#proyectos">Ver proyectos</a>
+      <a class="btn btn-quiet" href="assets/CV-Antoine-Jacquemin-EN.pdf" download>CV en inglés</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="proyectos">
+    <div class="sec-head">
+      <h2>Proyectos</h2>
+      <span class="sec-note">Dashboards y plataformas de datos</span>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="thumb">
+          <!-- Para la captura: guarda la imagen como assets/finemetrix.png y cambia este bloque por
+               <img src="assets/finemetrix.png" alt="Dashboard de FineMetrix 2.0"> -->
+          <div class="thumb-blank"><span class="spark"><i style="height:38%"></i><i style="height:56%"></i><i style="height:44%"></i><i style="height:72%"></i><i style="height:61%"></i><i style="height:88%"></i><i style="height:79%"></i><i style="height:100%"></i></span></div>
+        </div>
+        <div class="card-body">
+          <h3>FineMetrix 2.0</h3>
+          <p>
+            Plataforma SaaS de análisis financiero con un motor CFO que calcula ratios de
+            liquidez, margen de ganancia y un índice de salud financiera a partir de los
+            movimientos de la empresa. Desplegada en producción sobre Firebase, con
+            Firestore y reglas de seguridad por organización.
+          </p>
+          <ul class="stack"><li>Power BI</li><li>Google Analytics</li><li>Firebase</li><li>Firestore</li><li>JavaScript</li></ul>
+          <div class="card-links">
+            <a href="https://finemetrix-4dde5.web.app" target="_blank" rel="noopener">Ver en producción →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <!-- Captura: assets/cartera.png -->
+          <div class="thumb-blank"><span class="spark"><i style="height:70%"></i><i style="height:52%"></i><i style="height:84%"></i><i style="height:41%"></i><i style="height:63%"></i><i style="height:30%"></i><i style="height:58%"></i><i style="height:47%"></i></span></div>
+        </div>
+        <div class="card-body">
+          <h3>Inteligencia para Cartera</h3>
+          <p>
+            Dashboard de cartera para seguimiento de saldos, antigüedad y concentración de
+            riesgo, con el modelo de datos y las consultas SQL que lo alimentan.
+          </p>
+          <ul class="stack"><li>Power BI</li><li>SQL</li></ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <!-- Captura: assets/multisucursal.png -->
+          <div class="thumb-blank"><span class="spark"><i style="height:44%"></i><i style="height:66%"></i><i style="height:59%"></i><i style="height:81%"></i><i style="height:73%"></i><i style="height:92%"></i><i style="height:55%"></i><i style="height:68%"></i></span></div>
+        </div>
+        <div class="card-body">
+          <h3>Operación Multi-sucursal</h3>
+          <p>
+            Consolidación de la operación de varias sucursales en una sola vista comparable:
+            ventas, desempeño y rentabilidad por punto, con reportería automatizada.
+          </p>
+          <ul class="stack"><li>Power BI</li><li>SQL</li></ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <!-- Captura: assets/customer-health-score.png -->
+          <div class="thumb-blank"><span class="spark"><i style="height:88%"></i><i style="height:74%"></i><i style="height:62%"></i><i style="height:55%"></i><i style="height:49%"></i><i style="height:38%"></i><i style="height:33%"></i><i style="height:26%"></i></span></div>
+        </div>
+        <div class="card-body">
+          <h3>Customer Health Score</h3>
+          <p>
+            Score de salud del cliente que combina uso, recencia y comportamiento de compra
+            en un solo indicador, para detectar cuentas en riesgo antes de que se vayan.
+          </p>
+          <ul class="stack"><li>SQL</li><li>Power BI</li></ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <!-- Captura: assets/growth-analytics-fintech.png -->
+          <div class="thumb-blank"><span class="spark"><i style="height:100%"></i><i style="height:38%"></i><i style="height:22%"></i><i style="height:14%"></i><i style="height:8%"></i><i style="height:46%"></i><i style="height:59%"></i><i style="height:35%"></i></span></div>
+        </div>
+        <div class="card-body">
+          <h3>Growth Analytics para Fintech</h3>
+          <p>
+            Adquisición, retención y unit economics en un tablero: CAC blended de $42, LTV a
+            12 meses de $185, relación LTV/CAC de 4.4x, el embudo completo de 412 mil
+            visitantes a 34.6 mil usuarios recurrentes, y desempeño por canal con
+            segmentación RFM.
+          </p>
+          <ul class="stack"><li>SQL</li><li>Power BI</li><li>Meta Ads</li><li>Google Ads</li><li>RFM</li></ul>
+          <div class="card-links">
+            <a href="proyectos/growth-analytics-fintech.html">Abrir el dashboard →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="assets/ecommerce-sales-intelligence.png" alt="Dashboard E-commerce Sales Intelligence: KPIs de revenue, órdenes y recompra, revenue mensual contra el año anterior, top de productos, revenue por país y retención por cohorte.">
+        </div>
+        <div class="card-body">
+          <h3>E-commerce Sales Intelligence</h3>
+          <p>
+            Retail online con operación en 38 países y 1.07 millones de transacciones. Modelo
+            dimensional en SQL Server, cohortes y RFM con window functions, ETL en Power Query
+            y publicación en Tableau Server. Reveló que dos mercados crecían de forma orgánica
+            sin un peso de inversión publicitaria.
+          </p>
+          <ul class="stack"><li>SQL Server</li><li>Tableau</li><li>Power Query</li><li>Cohortes</li></ul>
+          <div class="card-links">
+            <a href="assets/ecommerce-sales-intelligence.png" target="_blank" rel="noopener">Ver dashboard →</a>
+            <a href="assets/caso-ecommerce-sales-intelligence.pdf" target="_blank" rel="noopener">Leer el caso →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="sec-head">
+      <h2>Experiencia</h2>
+      <span class="sec-note">2020 — hoy</span>
+    </div>
+    <ul class="timeline">
+      <li>
+        <span class="when">Feb 2025 — Presente</span>
+        <div>
+          <p class="role">Especialista en Ciencia de Datos</p>
+          <p class="org">Consultor independiente</p>
+          <p class="what">Proyectos de analítica bajo contrato: pipelines ETL en Python, pandas y MySQL que consolidan fuentes dispersas, y dashboards en Power BI y Tableau con reportería automatizada para KPIs de ventas, métricas de cliente y análisis financiero.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Ago 2024 — Feb 2025</span>
+        <div>
+          <p class="role">Data Analyst — Expansión &amp; Marketing</p>
+          <p class="org">Sede Café</p>
+          <p class="what">Evaluación de ubicaciones con modelos predictivos en Python sobre inversiones de $2–3M por local, dashboards de KPIs en Power BI, control del presupuesto mensual de marketing digital e implementación de Google Analytics. Tres ubicaciones rentables identificadas.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Feb — Jun 2024</span>
+        <div>
+          <p class="role">Data &amp; Marketing Analyst (Proyecto)</p>
+          <p class="org">Dynasoft</p>
+          <p class="what">Consultoría de transformación digital B2B: análisis y estandarización de una base de más de 2,500 clientes, dashboards de adopción y engagement en Power BI, y reportería automatizada con Python y SQL. Entregado bajo presupuesto.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Ago 2022 — Ene 2024</span>
+        <div>
+          <p class="role">Growth &amp; Development Analyst</p>
+          <p class="org">Grupo Salinas — Tiendas Neto</p>
+          <p class="what">Equipo de expansión de una cadena nacional de autoservicio: análisis financiero de aperturas de $8–12M por tienda, dashboards de ventas y rentabilidad en Tableau, calidad de datos de producto a nivel SKU y segmentación sobre más de 30,000 registros.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Ene 2020 — Ene 2022</span>
+        <div>
+          <p class="role">Marketing Analyst &amp; Growth Specialist</p>
+          <p class="org">Donadora · Fintech</p>
+          <p class="what">Presupuesto anual de marketing cercano a $500K con control diario en Meta y Google Ads. Análisis de CAC, ROAS y conversión, pruebas A/B, optimización de funnels y segmentación RFM sobre ~30,000 usuarios.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Skills</h2>
+      <span class="sec-note">Herramientas de trabajo diario</span>
+    </div>
+    <ul class="skills">
+      <li>SQL</li><li>Python</li><li>Power BI</li><li>Tableau</li>
+      <li>Google Analytics 4</li><li>Google Ads</li><li>Meta Ads</li>
+      <li>A/B Testing</li><li>ETL</li><li>Excel</li>
+    </ul>
+  </section>
+
+  <section id="formacion">
+    <div class="sec-head">
+      <h2>Formación e idiomas</h2>
+    </div>
+    <div class="two-col">
+      <div class="mini">
+        <h3>Formación</h3>
+        <ul>
+          <li><span>Lic. Mercadotecnia Internacional</span><span class="meta">U. del Pedregal · 2014–2018</span></li>
+          <li><span>Ciencia de Datos</span><span class="meta">U. Anáhuac · 2023–2024</span></li>
+          <li><span>Inteligencia Artificial</span><span class="meta">U. Anáhuac · 2023–2024</span></li>
+          <li><span>Big Data y Data Science</span><span class="meta">U. Anáhuac · 2025</span></li>
+          <li><span>Google Analytics IQ</span><span class="meta">Google · 2024</span></li>
+          <li><span>Python for Data Science</span><span class="meta">Coursera · 2023</span></li>
+        </ul>
+      </div>
+      <div class="mini">
+        <h3>Idiomas</h3>
+        <ul>
+          <li><span>Español</span><span class="meta">Nativo</span></li>
+          <li><span>Inglés</span><span class="meta">C1</span></li>
+          <li><span>Francés</span><span class="meta">B1</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="sec-head">
+      <h2>Contacto</h2>
+    </div>
+    <p class="pitch">
+      Busco un equipo de datos o analítica donde el análisis se traduzca en decisiones.
+      Escríbeme y platicamos.
+    </p>
+    <div class="hero-actions" style="margin-top:1.2rem">
+      <a class="btn btn-solid" href="mailto:anjaraful@gmail.com">anjaraful@gmail.com</a>
+      <a class="btn" href="https://linkedin.com/in/antoine-jacquemin" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-quiet" href="tel:+525534680740">55 3468 0740</a>
+      <a class="btn btn-quiet" href="assets/CV-Antoine-Jacquemin-ES.pdf" download>Descargar CV</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="sig">Antoine Jacquemin Ramírez · Data &amp; Marketing Analyst · CDMX</span>
+    <span class="sig"><a href="mailto:anjaraful@gmail.com">anjaraful@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
