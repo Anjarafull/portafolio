@@ -30,29 +30,38 @@ saltó a UE 5.6 el 29 abr 2026 (v0.8.0) y el ModKit se actualizó a la par.
 1. Confirmar que la instalación del juego está en UE 5.6.x.
 2. Abrir el `.uproject` del Porsche en UE 5.6.1 y verificar que carga limpio.
 3. Revisar el reimport del FBX — es donde se quedó la sesión de agosto.
-4. **COMPUERTA** — Confirmar que se pueden inyectar mallas propias vía `.pak`.
-   Mod Menu v2 lista "custom user meshes" como *coming soon*, pero eso limita a
-   esa herramienta, no al juego. Si esto falla, replantear el método antes de
-   invertir más horas en el modelo.
+4. **COMPUERTA** — Probar que un `.pak` con malla propia carga. Prueba mínima:
+   un `.pak` que sobrescriba la malla de un coche base con una geometría
+   cualquiera. Si aparece en juego, la ruta está abierta.
+   No confundir mecanismos: el *coming soon* de "custom user meshes" es de
+   Mod Menu v2, que corre sobre **UE4SS** e intercambia en tiempo real piezas ya
+   cargadas en el juego. Eso es distinto de un `.pak` que sobrescribe un asset en
+   disco; la limitación de esa herramienta no dice nada sobre esta ruta.
 5. Elegir coche base: sedán o SUV (las más compatibles).
 6. Auditar el Porsche contra la base: nombres y conteo de mallas de puerta,
    esqueleto, colisión. Las puertas solo funcionan si sus mallas se reemplazan bien.
-7. Empaquetar `.pak` → `BlueClient\Content\Paks\~mods\`.
-   Verificar el nombre exacto de la carpeta: las fuentes discrepan entre `~mods` y `mods~`.
+7. Empaquetar `.pak` → `BlueClient\Content\Paks\~mods\` (carpeta que
+   probablemente haya que crear a mano). La tilde va **al inicio**: fuerza la
+   carga posterior a los archivos base, que es el mecanismo por el que el mod
+   sobrescribe el original. Al reves no pisa nada.
 8. Probar en orden: aparece → el Zoi entra → **conduce** → abren las puertas.
 9. Retomar la sesión de Blender.
 
 ## Confianza de las fuentes
 
-Toda la investigación salió de fragmentos de buscador. La política de red bloqueó
-el acceso directo a Nexus, Patreon, CurseForge, `mod-docs.playinzoi.com` y los
-sitios de la comunidad — ninguna página pudo abrirse de primera mano.
+Toda la investigación salió de fragmentos de buscador. La política de red rechazó
+*todos* los dominios probados — Nexus, Patreon, CurseForge, `mod-docs.playinzoi.com`,
+`forum.playinzoi.com`, los sitios de la comunidad, YouTube y hasta Wikipedia.
+Ninguna página pudo abrirse de primera mano.
 
 **Alta confianza:** el salto a UE 5.6 y su fecha; la actualización del ModKit;
 que los vehículos no son categoría soportada.
 
+**Alta tambien:** la carpeta es `~mods` con la tilde al inicio, y esa posicion es
+lo que fuerza la carga posterior a los archivos base.
+
 **Media:** que el reemplazo produce coches conducibles y que las puertas dependen
-de sus mallas; la ruta de instalación del `.pak`.
+de sus mallas; que Mod Menu v2 corre sobre UE4SS.
 
 **Sin verificar:** el mod del correo de Patreon del 4 sep 2026 y su supuesta
 etiqueta "full drivable" (el texto del cuerpo nunca fue visible en la captura);
