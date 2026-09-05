@@ -25,6 +25,19 @@ Los vehículos **no son una categoría del ModKit oficial**. Eso deja dos camino
 La versión de engine que se estaba usando (**UE 5.6.1**) era la correcta: el juego
 saltó a UE 5.6 el 29 abr 2026 (v0.8.0) y el ModKit se actualizó a la par.
 
+### "Coche nuevo" no es una tercera ruta
+
+El catálogo de vehículos es cerrado — tanto que existe un mod dedicado solo a
+desbloquear coches ya presentes pero ocultos en el menú de compra del teléfono.
+Añadir una entrada exigiría sobrescribir la tabla del catálogo completa: se sigue
+pagando el costo del reemplazo, cada parche que toque esa tabla tumba el mod, y
+dos mods que lo intenten chocan. No verificado para inZOI, y desaconsejable.
+
+Señales de que la ruta real es reemplazo: el lenguaje de la comunidad asume una
+base ("funciona con cualquier coche, pero sedán y SUV son los más amigables";
+"las puertas funcionan si *reemplazas* bien las mallas"), el ModKit no soporta
+vehículos, y la tilde de `~mods` existe precisamente para pisar el original.
+
 ## Secuencia de ejecución
 
 1. Confirmar que la instalación del juego está en UE 5.6.x.
@@ -37,7 +50,12 @@ saltó a UE 5.6 el 29 abr 2026 (v0.8.0) y el ModKit se actualizó a la par.
    Mod Menu v2, que corre sobre **UE4SS** e intercambia en tiempo real piezas ya
    cargadas en el juego. Eso es distinto de un `.pak` que sobrescribe un asset en
    disco; la limitación de esa herramienta no dice nada sobre esta ruta.
-5. Elegir coche base: sedán o SUV (las más compatibles).
+5. Elegir coche base **por conteo de puertas y distancia entre ejes**, no por
+   categoría. Sedán y SUV son las bases más dóciles pero tienen cuatro puertas, y
+   el 911 tiene dos: sobre una base de cuatro, las traseras siguen en el esqueleto
+   y en la lógica, y el juego intentará abrirlas. O se busca una base de dos
+   puertas, o se les entrega geometría vacía. Es el factor que más trabajo ahorra
+   o cuesta en los pasos 6 y 8.
 6. Auditar el Porsche contra la base: nombres y conteo de mallas de puerta,
    esqueleto, colisión. Las puertas solo funcionan si sus mallas se reemplazan bien.
 7. Empaquetar `.pak` → `BlueClient\Content\Paks\~mods\` (carpeta que
