@@ -56,6 +56,9 @@ vehículos, y la tilde de `~mods` existe precisamente para pisar el original.
    y en la lógica, y el juego intentará abrirlas. O se busca una base de dos
    puertas, o se les entrega geometría vacía. Es el factor que más trabajo ahorra
    o cuesta en los pasos 6 y 8.
+   **Revisar tambien los coches ocultos** (ver abajo): el clasico es el candidato
+   a dos puertas, y pisar un coche que estaba oculto de todos modos vuelve casi
+   nulo el costo del reemplazo, a cambio de depender del mod que los destapa.
 6. Auditar el Porsche contra la base: nombres y conteo de mallas de puerta,
    esqueleto, colisión. Las puertas solo funcionan si sus mallas se reemplazan bien.
 7. Empaquetar `.pak` → `BlueClient\Content\Paks\~mods\` (carpeta que
@@ -89,3 +92,29 @@ quién lo firma. El coche de la foto es un **Toyota Supra A90**, no un Porsche.
 nombre es **WickedZoi**, un mod adulto distribuido por Patreon e itch.io, con una
 nota de prensa cuestionando si es estafa. Ningún resultado lo liga a vehículos.
 Precaución con cualquier descarga de esa fuente.
+
+## Contenido oculto en el juego
+
+Hay cuatro vehiculos completos que no aparecen en el menu de compra del telefono,
+con precio ya asignado — no son restos a medio hacer:
+
+| Coche | Precio |
+|---|---|
+| Clasico | $15,000 |
+| Pickup | $40,000 |
+| STARIA | $20,000 |
+| IONIQ 9 | $50,000 |
+
+Los destapa un mod de **Yocodream** (Nexus 337 / CurseForge "Vehicles Unlocked").
+STARIA e IONIQ 9 son Hyundai, coreana igual que KRAFTON: parece un acuerdo de
+marca preparado y no activado, mas que contenido olvidado.
+
+Implicaciones para este proyecto:
+
+- El **clasico** es el candidato a base de dos puertas que le falta al 911.
+  Habria que abrirlo y medir carroceria y distancia entre ejes; su forma no esta
+  verificada.
+- Reemplazar un coche oculto no le quita nada al jugador, asi que el costo
+  habitual del reemplazo (perder el original) casi desaparece.
+- Que la via comunitaria para "mas coches" sea destapar entradas existentes y no
+  anadirlas refuerza que el catalogo es una lista fija con bandera de visibilidad.
