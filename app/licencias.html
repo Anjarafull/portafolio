@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Generador de claves — uso interno</title>
+<style>
+body{margin:0;padding:40px 20px;background:#f9f9f7;color:#0b0b0b;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+.w{max-width:560px;margin:0 auto;background:#fcfcfb;border:1px solid #e1e0d9;border-radius:14px;padding:26px}
+h1{font-size:1.3rem;margin:0 0 6px}
+p{margin:0 0 16px;color:#52514e;font-size:.94rem}
+label{display:block;font-size:.82rem;font-weight:600;color:#52514e;margin-bottom:5px}
+input{width:100%;padding:10px 12px;border:1px solid #e1e0d9;border-radius:9px;font-size:1rem;box-sizing:border-box}
+button{margin-top:14px;padding:11px 18px;border:0;border-radius:9px;background:#2a78d6;color:#fff;
+  font-weight:600;font-size:1rem;cursor:pointer;font-family:inherit}
+button:hover{background:#1c5cab}
+#out{margin-top:20px;padding:16px;border-radius:10px;background:#e8f0fc;display:none}
+#clave{font-size:1.5rem;font-weight:700;letter-spacing:.04em;font-family:ui-monospace,Menlo,Consolas,monospace}
+#copiar{background:#fcfcfb;color:#0b0b0b;border:1px solid #c9d8ec;margin-left:10px;padding:6px 12px;font-size:.85rem}
+.warn{margin-top:22px;font-size:.85rem;color:#52514e;border-left:3px solid #fab219;padding-left:12px}
+textarea{width:100%;min-height:120px;margin-top:14px;padding:10px 12px;border:1px solid #e1e0d9;
+  border-radius:9px;font-family:inherit;font-size:.9rem;box-sizing:border-box}
+</style>
+</head>
+<body>
+<div class="w">
+  <h1>Generador de claves Pro</h1>
+  <p>Escribe el correo con el que te compró el cliente y mándale la clave que sale aquí.
+  La clave depende del correo: si lo escribes distinto (mayúsculas o espacios no importan, el resto sí),
+  la clave cambia y no le va a servir.</p>
+
+  <label for="correo">Correo del cliente</label>
+  <input type="email" id="correo" placeholder="cliente@dominio.com" autocomplete="off">
+  <button id="gen">Generar clave</button>
+
+  <div id="out">
+    <div><span id="clave"></span><button id="copiar">Copiar</button></div>
+    <textarea id="plantilla" readonly></textarea>
+  </div>
+
+  <p class="warn"><b>Es una licencia de honor.</b> Al validarse dentro del navegador, alguien con
+  ganas puede sacar la sal del código y fabricar claves. Sirve para que el cliente honesto pague,
+  no para blindar el producto. Si algún día vendes volumen, eso se resuelve con un servidor de
+  licencias, no con más ofuscación.</p>
+</div>
+
+<script>
+/* Misma sal y mismo algoritmo que la app. Si cambias uno, cambia el otro. */
+var SAL = 'cbz-2026-antoine';
+var ALFA = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+function fnv(str){
+  var h = 0x811c9dc5;
+  for(var i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h >>> 0;
+}
+function bloque(semilla){
+  var h = fnv(semilla), out = '';
+  for(var i=0;i<4;i++){ out += ALFA.charAt(h % 32); h = Math.imul(h ^ (h>>>7), 0x01000193) >>> 0; }
+  return out;
+}
+function claveDe(correo){
+  var base = String(correo||'').trim().toLowerCase() + '|' + SAL;
+  return 'CBZ-' + bloque('a'+base) + '-' + bloque('b'+base) + '-' + bloque('c'+base);
+}
+function generar(){
+  var c = document.getElementById('correo').value.trim();
+  if(!c){ alert('Escribe el correo'); return; }
+  var k = claveDe(c);
+  document.getElementById('clave').textContent = k;
+  document.getElementById('plantilla').value =
+    'Hola, gracias por tu compra.\n\n' +
+    'Tu licencia Pro de Cobranza al Día:\n\n' +
+    'Correo: ' + c + '\n' +
+    'Clave:  ' + k + '\n\n' +
+    'Para activarla: abre la app, entra a Ajustes → "Ya tengo mi clave", captura ese correo y esa clave.\n' +
+    'Quedan desbloqueadas las facturas ilimitadas, la exportación a CSV, el estado de cuenta imprimible,\n' +
+    'los respaldos y las plantillas editables.\n\n' +
+    'Cualquier duda, contéstame este correo.';
+  document.getElementById('out').style.display = 'block';
+}
+document.getElementById('gen').addEventListener('click', generar);
+document.getElementById('correo').addEventListener('keydown', function(e){ if(e.key==='Enter') generar(); });
+document.getElementById('copiar').addEventListener('click', function(){
+  var t = document.getElementById('clave').textContent;
+  if(navigator.clipboard) navigator.clipboard.writeText(t);
+  this.textContent = 'Copiada';
+  var b = this; setTimeout(function(){ b.textContent = 'Copiar'; }, 1500);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobranza al Día — deja de perseguir pagos en Excel y WhatsApp</title>
+<meta name="description" content="Sube tus facturas, mira quién te debe y manda el recordatorio por WhatsApp en dos clics. Sin instalar nada, sin mensualidad.">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232a78d6'/><path d='M28 62l16-16 12 12 18-24' stroke='white' stroke-width='9' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<style>
+:root{
+  color-scheme: light;
+  --plane:#f9f9f7; --surface:#fcfcfb; --surface-2:#f2f1ed;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --line:#e1e0d9; --accent:#2a78d6; --accent-ink:#1c5cab; --accent-soft:#e8f0fc;
+  --good:#0ca30c; --critical:#d03b3b;
+  --font:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232322;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --line:#2c2c2a; --accent:#3987e5; --accent-ink:#86b6ef; --accent-soft:#16273c;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:var(--accent-ink)}
+h1,h2,h3{margin:0;letter-spacing:-.02em;line-height:1.15;font-weight:680}
+h1{font-size:clamp(1.9rem,5vw,3.1rem)}
+h2{font-size:clamp(1.4rem,3.4vw,2rem)}
+h3{font-size:1.05rem;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+
+.nav{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:12px;padding-top:12px;padding-bottom:12px}
+.logo{width:30px;height:30px;border-radius:9px;background:var(--accent);display:grid;place-items:center;flex:none}
+.nav b{margin-right:auto;font-size:1.02rem}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  padding:10px 16px;border-radius:9px;font-weight:600;cursor:pointer;font-size:.97rem;
+}
+.btn:hover{background:var(--surface-2)}
+.btn.primary{background:var(--accent);border-color:transparent;color:#fff}
+.btn.primary:hover{background:var(--accent-ink)}
+.btn.lg{padding:13px 22px;font-size:1.02rem}
+
+.hero{padding:66px 0 44px}
+.hero .eyebrow{
+  display:inline-block;background:var(--accent-soft);color:var(--accent-ink);
+  font-size:.82rem;font-weight:650;padding:5px 12px;border-radius:99px;margin-bottom:18px;
+}
+.hero p.lead{font-size:clamp(1.05rem,2.2vw,1.24rem);color:var(--ink-2);margin-top:16px;max-width:62ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;align-items:center}
+.cta small{color:var(--muted);font-size:.86rem}
+.shot{
+  margin-top:38px;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(11,11,11,.05), 0 24px 60px -30px rgba(11,11,11,.4);
+  background:var(--surface);
+}
+figure{margin:0}
+figcaption{font-size:.85rem;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line)}
+
+.dolor{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+@media (max-width:760px){.dolor{grid-template-columns:1fr}}
+.dolor div{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--critical);border-radius:10px;padding:16px 18px}
+.dolor b{display:block;margin-bottom:4px}
+.dolor p{color:var(--ink-2);font-size:.94rem}
+
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:30px;counter-reset:p}
+@media (max-width:760px){.pasos{grid-template-columns:1fr}}
+.pasos li{list-style:none;counter-increment:p}
+.pasos li::before{
+  content:counter(p);display:grid;place-items:center;width:30px;height:30px;border-radius:9px;
+  background:var(--accent);color:#fff;font-weight:700;margin-bottom:10px;
+}
+.pasos h3{margin-bottom:4px}
+.pasos p{color:var(--ink-2);font-size:.95rem}
+
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;margin-top:26px;padding:0;list-style:none}
+@media (max-width:760px){.feats{grid-template-columns:1fr}}
+.feats li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2)}
+.feats svg{flex:none;margin-top:4px;width:16px;height:16px}
+.feats b{color:var(--ink)}
+
+.precios{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+@media (max-width:760px){.precios{grid-template-columns:1fr}}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.plan.destacado{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.plan .tag{font-size:.78rem;font-weight:700;color:var(--accent-ink);text-transform:uppercase;letter-spacing:.05em}
+.plan .precio{font-size:2.3rem;font-weight:720;letter-spacing:-.03em;margin:8px 0 2px}
+.plan .precio small{font-size:.95rem;font-weight:500;color:var(--muted);letter-spacing:0}
+.plan ul{list-style:none;padding:0;margin:16px 0 20px;display:grid;gap:8px}
+.plan li{display:flex;gap:9px;align-items:flex-start;font-size:.95rem;color:var(--ink-2)}
+.plan li svg{flex:none;margin-top:4px;width:15px;height:15px}
+
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:600;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+ ";color:var(--accent);font-weight:700}
+.faq details[open] summary::before{content:"– "}
+.faq p{color:var(--ink-2);margin-top:8px;font-size:.96rem}
+
+footer{padding:34px 0;color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.nota{background:var(--surface-2);border:1px dashed var(--line);border-radius:10px;padding:14px 16px;font-size:.9rem;color:var(--ink-2);margin-top:24px}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <span class="logo"><svg viewBox="0 0 100 100" width="18" height="18" aria-hidden="true"><path d="M28 62l16-16 12 12 18-24" stroke="#fff" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  <b>Cobranza al Día</b>
+  <a class="btn" href="#precios">Precios</a>
+  <a class="btn primary" href="index.html">Probar gratis</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Para negocios que venden a crédito</span>
+  <h1>Ya sabes que te deben.<br>Lo que no sabes es a quién cobrarle hoy.</h1>
+  <p class="lead">Cobranza al Día ordena tus facturas por lo que más te conviene cobrar,
+  te dice cuántos días lleva cada una y te arma el mensaje listo para mandar por WhatsApp.
+  Abres el navegador y en cinco minutos tienes tu cartera bajo control.</p>
+  <div class="cta">
+    <a class="btn primary lg" href="index.html">Probar gratis, sin registro</a>
+    <a class="btn lg" href="#precios">Ver precios</a>
+    <small>No pide correo. No instala nada. Tus datos no salen de tu equipo.</small>
+  </div>
+  <figure class="shot">
+    <img src="captura-panel.png" alt="Panel de Cobranza al Día: total por cobrar, monto vencido, antigüedad de la cartera y ranking de deudores." width="1200" height="1010">
+    <figcaption>El panel con datos de ejemplo. Puedes cargarlo con un clic para probar antes de meter lo tuyo.</figcaption>
+  </figure>
+</div></header>
+
+<section><div class="wrap">
+  <h2>Si esto te suena, es para ti</h2>
+  <div class="dolor">
+    <div><b>“Se me pasó”</b><p>La factura venció hace tres semanas y nadie la volvió a ver hasta que hizo falta el dinero.</p></div>
+    <div><b>El Excel de siempre</b><p>Un archivo que solo entiende una persona, que nadie actualiza y que no te dice a quién llamar primero.</p></div>
+    <div><b>Cobrar da pena</b><p>No sabes cómo redactarlo sin sonar agresivo, así que lo dejas para mañana. Y mañana otra vez.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Cómo funciona</h2>
+  <ol class="pasos">
+    <li><h3>Carga lo que te deben</h3><p>Captura las facturas o pega tu Excel de un jalón. Cliente, folio, fecha de vencimiento y monto: nada más.</p></li>
+    <li><h3>Mira tu cartera</h3><p>Cuánto te deben, cuánto está vencido, en qué tramo de atraso y qué cliente concentra el riesgo.</p></li>
+    <li><h3>Cobra en dos clics</h3><p>La app te ordena la fila del día y te escribe el mensaje con el tono que toca. Un botón y sale por WhatsApp.</p></li>
+  </ol>
+  <figure class="shot">
+    <img src="captura-cobrar.png" alt="Pantalla Cobrar hoy: cada factura con su saldo, días de atraso, mensaje sugerido y botón de WhatsApp." width="1200" height="820">
+    <figcaption>La fila de cobro del día, ordenada por monto y atraso. El mensaje ya viene escrito y lo puedes editar antes de enviarlo.</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Lo que trae</h2>
+  <ul class="feats">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Antigüedad de cartera</b> por tramos de 30, 60 y 90 días, como la pide tu contador.</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Mensajes con cuatro tonos</b>, del recordatorio amable al último aviso, según los días de atraso.</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Envío por WhatsApp</b> con el texto ya cargado; solo revisas y mandas.</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Pagos y abonos parciales</b>: el saldo se recalcula solo y la factura sale de la fila.</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Bitácora de gestiones</b>: queda escrito quién dijo qué y cuándo.</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Estado de cuenta imprimible</b> por cliente, en PDF desde el navegador.</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Importar y exportar CSV</b> para entrar y salir cuando quieras.</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Funciona sin internet</b> una vez abierta, en compu, tablet o teléfono.</span></li>
+  </ul>
+</div></section>
+
+<section id="precios"><div class="wrap">
+  <h2>Precio</h2>
+  <p style="color:var(--ink-2);margin-top:8px">Pago único. Sin mensualidad, sin tarjeta guardada, sin sorpresas.</p>
+  <div class="precios">
+    <div class="plan">
+      <span class="tag">Gratis</span>
+      <div class="precio">$0</div>
+      <p style="color:var(--muted);font-size:.92rem">Para probarla con tu cartera real.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Hasta 15 facturas abiertas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Panel, fila de cobro y WhatsApp</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Pagos, abonos y gestiones</li>
+      </ul>
+      <a class="btn" href="index.html">Empezar ahora</a>
+    </div>
+    <div class="plan destacado">
+      <span class="tag">Pro · pago único</span>
+      <div class="precio">$890 <small>MXN</small></div>
+      <p style="color:var(--muted);font-size:.92rem">Una sola vez, para siempre, por equipo.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Facturas y clientes sin límite</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Exportar a CSV para tu contador</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Estado de cuenta imprimible</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Respaldo y restauración</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#0ca30c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Plantillas de cobro a tu manera</li>
+      </ul>
+      <a class="btn primary" id="comprar" href="mailto:tucorreo@ejemplo.com?subject=Quiero%20Cobranza%20al%20D%C3%ADa%20Pro&amp;body=Hola%2C%20quiero%20la%20licencia%20Pro.%20Mi%20correo%20es%3A%20">Quiero Pro</a>
+      <p style="color:var(--muted);font-size:.84rem;margin-top:10px">Te contestamos con los datos de pago y tu clave.</p>
+    </div>
+  </div>
+
+  <div class="plan" style="margin-top:20px">
+    <span class="tag">¿Prefieres que te lo dejemos listo?</span>
+    <div class="precio">$2,500 <small>MXN · una vez</small></div>
+    <p style="color:var(--ink-2);font-size:.95rem;margin-bottom:14px">
+      Licencia Pro incluida, más carga de tu cartera actual desde tu Excel, plantillas de cobro
+      redactadas con tus palabras y una sesión de una hora para dejar a tu equipo operando.</p>
+    <a class="btn" href="mailto:tucorreo@ejemplo.com?subject=Instalaci%C3%B3n%20de%20Cobranza%20al%20D%C3%ADa">Cotizar la instalación</a>
+  </div>
+</div></section>
+
+<section class="faq"><div class="wrap">
+  <h2>Preguntas que siempre nos hacen</h2>
+  <details open><summary>¿Dónde quedan mis datos?</summary>
+    <p>En tu propio navegador, en el equipo donde la usas. No hay servidor ni base de datos nuestra:
+    no podemos ver tu cartera aunque quisiéramos. La contra es que el respaldo corre por tu cuenta,
+    y por eso Pro trae el botón para descargarlo cuando quieras.</p></details>
+  <details><summary>¿Necesito internet?</summary>
+    <p>Solo para abrirla la primera vez. Después funciona aunque se caiga la conexión;
+    el internet hace falta nada más para mandar el WhatsApp.</p></details>
+  <details><summary>¿Sirve para varias personas del equipo?</summary>
+    <p>Cada equipo lleva su propia copia. Si dos personas cobran, comparte el respaldo entre ellas
+    o pide la instalación y lo dejamos ordenado.</p></details>
+  <details><summary>¿Emite facturas fiscales?</summary>
+    <p>No. Esto no factura ni timbra: lleva el control de lo que ya facturaste y te ayuda a cobrarlo.
+    Convive bien con el sistema de facturación que ya uses.</p></details>
+  <details><summary>¿Qué pasa si cambio de computadora?</summary>
+    <p>Descargas el respaldo del equipo viejo y lo restauras en el nuevo. La licencia Pro se
+    activa con tu correo y tu clave, sin trámite.</p></details>
+</div></section>
+
+<section><div class="wrap" style="text-align:center">
+  <h2>Ponle números a lo que te deben</h2>
+  <p style="color:var(--ink-2);max-width:52ch;margin:12px auto 0">
+    Cinco minutos con tu cartera real y vas a ver, por primera vez, cuánto dinero tuyo está parado.</p>
+  <div class="cta" style="justify-content:center">
+    <a class="btn primary lg" href="index.html">Abrir la app</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Cobranza al Día — hecho con datos, no con adornos.</span>
+  <span><a href="index.html">Abrir la app</a></span>
+</div></footer>
+
+</body>
+</html>
