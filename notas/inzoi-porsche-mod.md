@@ -152,9 +152,34 @@ Romperse en cada version es lo normal aqui, no la excepcion: hay hilos de usuari
 reportando 40 de 139 mods muertos tras un parche de ModKit. Presupuestar el
 reempaquetado como mantenimiento recurrente.
 
-### Pendiente: el inventario
+### Inventario (barrido del 13 sep 2026)
 
-**No hay inventario de "todos los mods".** Lo unico documentado es el Porsche y la
-rama de Blender. Hay que enumerar el resto desde la PC (carpeta `~mods`, proyectos
-de ModKit, biblioteca de CurseForge) antes de poder planear mod por mod.
+Revisadas las 24 sesiones de la cuenta. **De inZOI hay una sola linea de trabajo**,
+no varias:
+
+| Sesion | Cuando | Estado |
+|---|---|---|
+| "Una mision para ti" (`session_01AVicWagbzNvLqkHJu6U2wD`) | 22-24 ago | El Porsche. Reimportando malla desde FBX en UE 5.6.1 |
+| "Acceso a Blender desde Codex" (`session_01BvSuMpa17CLGK6JZ3gZok5`) | 22-29 ago | Rama de modelado que lo alimentaba. Colgada en "¿La refuerzo?" |
+| "Inzoi mod coche conducible" (`session_01AavtwTEfGEnueSXrQEhNUP`) | 5-13 sep | Solo investigacion, sin archivos |
+
+Los otros proyectos de modding son **de otros juegos** y no entran aqui:
+Minecraft (barco Prinz Eugen, jar compilado e instalado en `a0a4b75`, pendiente de
+prueba en juego), Soulmask (Galeon San Felipe), e impresion 3D (Mewtwo, Taller 3D).
+
+Sin clasificar: "Shaders y assets para adultos" (`session_01C7DWHwrfdt2KGnMZ8EAbfX`,
+8-9 sep, en la PC). El titulo no dice a que juego pertenece.
+
+### Consecuencia: no hay nada roto
+
+El Porsche nunca se empaqueto ni se instalo, asi que la v0.10 no tumbo nada. Esto
+no es un trabajo de reparacion sino de terminar algo a medias — y en el punto mas
+barato para migrar, porque quedo en el reimport de la malla y no en el empaquetado.
+
+### Lo que no se puede hacer en remoto
+
+Verificar que un mod funciona exige **correr el juego**: arrancar inZOI, comprar el
+coche y conducirlo. Ninguna herramienta remota sustituye eso. Para trabajar sobre
+los archivos hace falta Remote Control desde la PC; las sesiones bridge vienen
+marcando `computer_unreachable`.
 
