@@ -118,3 +118,43 @@ Implicaciones para este proyecto:
   habitual del reemplazo (perder el original) casi desaparece.
 - Que la via comunitaria para "mas coches" sea destapar entradas existentes y no
   anadirlas refuerza que el catalogo es una lista fija con bandera de visibilidad.
+
+## Migrar a la version actual (13 sep 2026)
+
+El juego paso de la v0.8.0 de abril a la **v0.10.0 el 3 de septiembre** (update
+"Vacations"), mas el hotfix **v0.10.1** y correcciones el 9 y el 10 de septiembre.
+Build Windows Steam del parche base: `20260902.14983.W`.
+
+### Primero: reactivar, no diagnosticar
+
+El juego **desactiva todos los mods automaticamente** cuando se aplica un parche,
+por estabilidad, y hay que reactivarlos a mano. Un mod que "dejo de funcionar"
+puede estar simplemente apagado. Separar lo desactivado de lo roto antes de tocar
+un solo archivo.
+
+### Cada tipo se rompe distinto
+
+| Tipo | Que lo rompe |
+|---|---|
+| Mods de ModKit (ropa, muebles, accesorios) | Cambios en el propio ModKit. Se actualiza desde Steam y se reempaquetan. El parche de septiembre toco el ModKit y corrigio los mods creados duplicando datos de DLC. |
+| `.pak` en `~mods` (reemplazo de assets) | Que el parche haya movido o renombrado el asset original que sobrescribes. Causa numero uno de rotura silenciosa: el mod carga y no pasa nada. |
+| UE4SS (Mod Menu y similares) | Lo mas fragil: engancha estructuras en memoria, cualquier recompilacion lo desalinea. Depende de que su autor lo actualice. |
+
+### Orden de trabajo
+
+1. Reactivar todo y anotar que falla de verdad.
+2. Actualizar el ModKit desde Steam antes de reabrir ningun proyecto.
+3. Para cada `.pak`, verificar que la ruta del asset que pisa sigue existiendo con
+   el mismo nombre.
+4. Reempaquetar y probar **de uno en uno**, nunca todos a la vez.
+
+Romperse en cada version es lo normal aqui, no la excepcion: hay hilos de usuarios
+reportando 40 de 139 mods muertos tras un parche de ModKit. Presupuestar el
+reempaquetado como mantenimiento recurrente.
+
+### Pendiente: el inventario
+
+**No hay inventario de "todos los mods".** Lo unico documentado es el Porsche y la
+rama de Blender. Hay que enumerar el resto desde la PC (carpeta `~mods`, proyectos
+de ModKit, biblioteca de CurseForge) antes de poder planear mod por mod.
+
