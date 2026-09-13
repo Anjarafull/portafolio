@@ -183,3 +183,38 @@ coche y conducirlo. Ninguna herramienta remota sustituye eso. Para trabajar sobr
 los archivos hace falta Remote Control desde la PC; las sesiones bridge vienen
 marcando `computer_unreachable`.
 
+## Ideas de mods de jugabilidad (pendientes, no empezadas)
+
+Recordadas por el usuario el 13 sep 2026, sin chat localizable que las respalde:
+mercado negro, drogas, alcohol, cuchillo, "un mundo mas vivo", y gasolina.
+
+**No se encontro el chat de origen.** Los dos unicos candidatos sin clasificar
+("Shaders y assets para adultos" `session_01C7DWHwrfdt2KGnMZ8EAbfX` del 8-9 sep, y
+"Una mision para ti" `session_01HUeAcoHkiqKUESKdzszicy` del 24-28 ago) no guardan
+resumen, y `get_session` solo devuelve metadatos. Punto ciego importante: el
+listado solo cubre sesiones de Claude Code, no chats normales de claude.ai.
+
+### Por que ninguna se puede construir todavia
+
+| Idea | Que necesita |
+|---|---|
+| Mercado negro, drogas, alcohol | Sistemas nuevos, objetos e interacciones |
+| Cuchillo | Objeto + interacciones, probablemente crimen |
+| Mundo mas vivo | Comportamiento de NPCs |
+| Gasolina | Mecanica de combustible enganchada al estado del vehiculo |
+
+Las cuatro son **logica de juego**, no assets — categoria distinta a la del Porsche.
+El ModKit cubre ropa, muebles y accesorios; las interacciones personalizadas siguen
+en "proximamente". **Los script mods con Lua llegan en diciembre de 2026**: KRAFTON
+los retraso un ano y cambio a Lua para que salgan mas completos y documentados.
+
+Hoy la unica via seria UE4SS, la capa mas fragil, la que se desalinea con cada
+parche. Conclusion: son proyecto de diciembre, sobre base oficial.
+
+**Excepcion parcial:** ya existen herramientas para modificar movimiento, guiones de
+conversacion, voces y recompensas de las interacciones entre Zois. Una rebanada de
+"mundo mas vivo" podria ser alcanzable hoy sin tocar UE4SS.
+
+**Orden:** el mod de gasolina tendria que engancharse al estado del vehiculo, asi
+que va despues del Porsche, nunca antes.
+
