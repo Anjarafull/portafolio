@@ -218,3 +218,29 @@ conversacion, voces y recompensas de las interacciones entre Zois. Una rebanada 
 **Orden:** el mod de gasolina tendria que engancharse al estado del vehiculo, asi
 que va despues del Porsche, nunca antes.
 
+## Correccion de calendario (3 oct 2026)
+
+El plazo se adelanto. **A mediados de octubre de 2026** sale una actualizacion de
+modding mas chica, pensada para mostrar las nuevas capacidades e **introducir los
+script mods**; la grande sigue en diciembre.
+
+El ModKit suma:
+
+- **Lua scripting** — la logica de juego que faltaba para Mercado Negro
+- **HTML para interfaces** — menus propios dentro del mod
+- **MCP integrado**, para que los modders usen herramientas LLM al construir
+
+Ambiguedad a resolver cuando salga: una fuente situa Lua en diciembre y otra dice
+que octubre ya introduce script mods. Lo mas probable es que octubre sea vista
+previa y diciembre lo completo.
+
+El 2 de octubre abrieron en el foro oficial el hilo "Getting Ready for inZOI's
+Modding Update - Brainstorm with Kjun".
+
+### Limite que no se mueve
+
+Un mod de inZOI se compila desde los assets del juego con Unreal Engine 5.6.1 y el
+ModKit, en Windows. Una sesion en la nube no puede producirlo: no tiene el juego,
+ni Unreal, ni los archivos. Construir mods requiere una sesion corriendo en la PC
+(app de escritorio de Claude o `claude remote-control`).
+
